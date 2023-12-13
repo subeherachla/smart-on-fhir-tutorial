@@ -1,4 +1,5 @@
 (function (window) {
+  console.log("INSIDE WINDOW FUNCTION");
   window.extractData = function () {
     var ret = $.Deferred();
 
