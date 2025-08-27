@@ -18,12 +18,14 @@
           query: {
             code: {
               $or: [
-                "http://loinc.org|8302-2",
-                // "http://loinc.org|29463-7",
-                // "http://loinc.org|8480-6",
-                "http://loinc.org|2085-9",
-                // "http://loinc.org|2089-1",
-                "http://loinc.org|55284-4",
+                "http://loinc.org|8302-2", // height
+                "http://loinc.org|29463-7", // weight
+                // "http://loinc.org|8480-6", // Systolic BP
+                // "http://loinc.org|8462-4", // Diastolic BP 
+                "http://loinc.org|2085-9", // Cholesterol in HDL
+                "http://loinc.org|2089-1", // Cholesterol in LDL
+                // "http://loinc.org|55284-4", // Blood pressure systolic and diastolic - discouraged
+                "http://loinc.org|85354-9", // Blood pressure panel with all children optional
               ],
             },
           },
