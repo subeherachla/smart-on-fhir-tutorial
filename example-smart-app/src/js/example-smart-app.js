@@ -32,9 +32,13 @@
           },
         });
 
-        $.when(pt, obv).fail(onError);
+        var device = smart.patient.api.fetchAll({
+          type: "Device",
+        });
 
-        $.when(pt, obv).done(function (patient, obv) {
+        $.when(pt, obv, device).fail(onError);
+
+        $.when(pt, obv, device).done(function (patient, obv, device) { console.log("Device ", device);
           var byCodes = smart.byCodes(obv, "code");
           var gender = patient.gender;
 
@@ -48,11 +52,11 @@
 
           var height = byCodes("8302-2");
           var weight = byCodes("29463-7");
-          var systolicbp = getBloodPressureValue(byCodes("85354-9"), "8480-6"); console.log("systolicbp", systolicbp);
-          var diastolicbp = getBloodPressureValue(byCodes("85354-9"), "8462-4"); console.log("diastolicbp", diastolicbp);
+          var systolicbp = getBloodPressureValue(byCodes("85354-9"), "8480-6"); 
+          var diastolicbp = getBloodPressureValue(byCodes("85354-9"), "8462-4"); 
           var hdl = byCodes("2085-9");
           var ldl = byCodes("2089-1");
-          var temp = byCodes("8310-5"); console.log("temp", temp);
+          var temp = byCodes("8310-5"); 
 
           var p = defaultPatient();
           p.birthdate = patient.birthDate;
