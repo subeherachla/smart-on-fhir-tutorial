@@ -60,7 +60,7 @@
           p.fname = fname;
           p.lname = lname;
           p.height = getQuantityValueAndUnit(height[0]);
-          p.temperature = temp;
+          p.temperature = getQuantityValueAndUnit(temp[0]);
           // p.weight = getQuantityValueAndUnit(weight[0]);
           
 
