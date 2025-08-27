@@ -20,6 +20,7 @@
               $or: [
                 "http://loinc.org|8302-2", // height
                 "http://loinc.org|29463-7", // weight
+                "http://loinc.org|8310-5", // Temperature
                 // "http://loinc.org|8480-6", // Systolic BP
                 // "http://loinc.org|8462-4", // Diastolic BP 
                 "http://loinc.org|2085-9", // Cholesterol in HDL
@@ -34,8 +35,6 @@
         $.when(pt, obv).fail(onError);
 
         $.when(pt, obv).done(function (patient, obv) {
-          console.log("PATIENT WHEN DONE IS ", patient);
-          console.log("OBV WHEN DONE IS ", obv);
           var byCodes = smart.byCodes(obv, "code");
           var gender = patient.gender;
 
@@ -49,11 +48,11 @@
 
           var height = byCodes("8302-2");
           var weight = byCodes("29463-7");
-          console.log("HEIGHT AND WEIGHT IS ", height, weight);
-          var systolicbp = getBloodPressureValue(byCodes("55284-4"), "8480-6");
-          var diastolicbp = getBloodPressureValue(byCodes("55284-4"), "8462-4");
+          var systolicbp = getBloodPressureValue(byCodes("85354-9"), "8480-6");
+          var diastolicbp = getBloodPressureValue(byCodes("85354-9"), "8462-4");
           var hdl = byCodes("2085-9");
           var ldl = byCodes("2089-1");
+          var temp = byCodes("8310-5");
 
           var p = defaultPatient();
           p.birthdate = patient.birthDate;
@@ -61,6 +60,7 @@
           p.fname = fname;
           p.lname = lname;
           p.height = getQuantityValueAndUnit(height[0]);
+          p.temperature = temp;
           // p.weight = getQuantityValueAndUnit(weight[0]);
           
 
@@ -96,6 +96,8 @@
       diastolicbp: { value: "" },
       ldl: { value: "" },
       hdl: { value: "" },
+      systolicbp: { value: "" },
+      temperature: { value: "" },
     };
   }
 
@@ -141,5 +143,6 @@
     $("#diastolicbp").html(p.diastolicbp);
     $("#ldl").html(p.ldl);
     $("#hdl").html(p.hdl);
+    $("#temp").html(p.temperature);
   };
 })(window);
