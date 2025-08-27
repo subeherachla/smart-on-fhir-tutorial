@@ -48,11 +48,11 @@
 
           var height = byCodes("8302-2");
           var weight = byCodes("29463-7");
-          var systolicbp = getBloodPressureValue(byCodes("85354-9"), "8480-6");
-          var diastolicbp = getBloodPressureValue(byCodes("85354-9"), "8462-4");
+          var systolicbp = getBloodPressureValue(byCodes("85354-9"), "8480-6"); console.log("systolicbp", systolicbp);
+          var diastolicbp = getBloodPressureValue(byCodes("85354-9"), "8462-4"); console.log("diastolicbp", diastolicbp);
           var hdl = byCodes("2085-9");
           var ldl = byCodes("2089-1");
-          var temp = byCodes("8310-5");
+          var temp = byCodes("8310-5"); console.log("temp", temp);
 
           var p = defaultPatient();
           p.birthdate = patient.birthDate;
