@@ -41,6 +41,7 @@
         $.when(pt, obv, device).done(function (patient, obv, device) { console.log("Device ", device);
           var byCodes = smart.byCodes(obv, "code");
           var gender = patient.gender;
+          var device = device[0].deviceName[0].name;
 
           var fname = "";
           var lname = "";
@@ -65,8 +66,8 @@
           p.lname = lname;
           p.height = getQuantityValueAndUnit(height[0]);
           p.temperature = getQuantityValueAndUnit(temp[0]);
+          p.device = device;
           // p.weight = getQuantityValueAndUnit(weight[0]);
-          
 
           if (typeof systolicbp != "undefined") {
              p.systolicbp = systolicbp;
@@ -102,6 +103,7 @@
       hdl: { value: "" },
       systolicbp: { value: "" },
       temperature: { value: "" },
+      device: { value: "" },
     };
   }
 
@@ -148,5 +150,6 @@
     $("#ldl").html(p.ldl);
     $("#hdl").html(p.hdl);
     $("#temp").html(p.temperature);
+    $("#device").html(p.device);
   };
 })(window);
